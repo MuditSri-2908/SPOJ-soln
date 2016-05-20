@@ -11,12 +11,12 @@ struct time1
 } ;
 
 
-bool myfunc(time1 t1,time1 t2)
+bool myfunc(time1 &t1,time1 &t2)
 {
 	return (t1.et<t2.et);
 
 }
-int nt(vector<time1> v,int s)
+int nt(vector<time1> &v,int s)
 {
 	for(int i=s-2;i>-1;i--)
 	{
@@ -26,7 +26,7 @@ int nt(vector<time1> v,int s)
 	return -1;
 }
 
-int ss(vector<time1> v,int s,vector<int> &d)
+int ss(vector<time1> &v,int s,vector<int> &d)
 {
 
 	if(v[s-1].et==0)
@@ -71,7 +71,7 @@ stable_sort(v.begin(),v.end(),myfunc);
 vector<int> d(v.size(),0);
 ans.push_back(ss(v,v.size(),d));
 for(int j=0;j<ans.size();j++)
-cout<<setfill('0')<<setw(8)<<ans[j]<<"\n";
+cout<<setfill('0')<<setw(8)<<(ans[j]%10000000)<<"\n";
 	
 	
 return 0;
