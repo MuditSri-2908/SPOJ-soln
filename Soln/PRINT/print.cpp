@@ -1,10 +1,13 @@
-#include <stdio.h>                                   
-#define MAX 31684
-#define LMT 178
-#define LEN 3410
-#define RNG 100032
+#include <stdio.h> 
+#include <vector>     
+using namespace std;                             
+#define MAX 46656
+#define LMT 216
+//#define LEN 3410
+#define RNG 1000000
 
-unsigned base[MAX/64], primes[LEN];
+unsigned base[MAX/64];
+vector<int> primes;
 
 #define sq(x) ((x)*(x))
 #define chkC(x,n) (x[n>>6]&(1<<((n>>1)&31)))
@@ -17,9 +20,9 @@ void sieve()
 		if(!chkC(base, i))
 			for(j=i*i, k=i<<1; j<MAX; j+=k)
 				setC(base, j);
-	for(i=3, j=0; i<MAX; i+=2)
+	for(i=3; i<MAX; i+=2)
 		if(!chkC(base, i))
-			primes[j++] = i;
+			primes.push_back(i);
 }
 
 void segmented_sieve(int a, int b)
